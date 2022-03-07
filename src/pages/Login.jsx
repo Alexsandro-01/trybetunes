@@ -15,12 +15,9 @@ class Login extends Component {
   }
 
   checkUserName = ({ target: { value } }) => {
-    if (value.length > 2) {
-      this.setState({
-        disabled: false,
-      });
-    }
+    const MIN_CHARACTERS = 3;
     this.setState({
+      disabled: value.length < MIN_CHARACTERS,
       userName: value,
     });
   }
