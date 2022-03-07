@@ -30,7 +30,7 @@ class Album extends Component {
     // const { match: { params: { id } } } = this.props;
     const { albumReceived } = this.state;
     // const albumTracks = albumReceived.filter((value) => value.wrapperType === 'track');
-    console.log(albumReceived);
+    // console.log(albumReceived);
     return (
       <div data-testid="page-album">
         <Header />
