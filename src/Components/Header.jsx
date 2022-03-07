@@ -38,7 +38,7 @@ class Header extends Component {
           )
         }
         <ul>
-          <li><Link testid="link-to-search" to="/search">Search</Link></li>
+          <li><Link data-testid="link-to-search" to="/search">Search</Link></li>
           <li><Link data-testid="link-to-favorites" to="/favorites">Favorites</Link></li>
           <li><Link data-testid="link-to-profile" to="/profile">Profile</Link></li>
         </ul>
