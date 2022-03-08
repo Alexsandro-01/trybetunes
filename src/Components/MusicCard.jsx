@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 
 class MusicCard extends Component {
@@ -14,6 +14,26 @@ class MusicCard extends Component {
 
   componentDidMount() {
     this.checkFavorites();
+  }
+
+  toggleFavoriteSongs = ({ target }, music) => {
+    if (target.checked) {
+      this.addToFavorites(music);
+    } else {
+      this.removeToFavoriteSongs(music);
+    }
+  }
+
+  removeToFavoriteSongs = (music) => {
+    this.setState({
+      loading: true,
+    }, async () => {
+      const ok = await removeSong(music);
+      this.setState({
+        loading: !ok === 'OK',
+        checked: false,
+      });
+    });
   }
 
   addToFavorites = (music) => {
@@ -75,7 +95,7 @@ class MusicCard extends Component {
                         name="favorite-input"
                         checked={ checked }
                         data-testid={ `checkbox-music-${music.trackId}` }
-                        onChange={ () => { this.addToFavorites(music); } }
+                        onChange={ (e) => { this.toggleFavoriteSongs(e, music); } }
                         id={ music.trackId }
                       />
                     </label>
