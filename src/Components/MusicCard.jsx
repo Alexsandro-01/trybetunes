@@ -25,6 +25,7 @@ class MusicCard extends Component {
   }
 
   removeToFavoriteSongs = (music) => {
+    const { funFavoriteSongs } = this.props;
     this.setState({
       loading: true,
     }, async () => {
@@ -33,6 +34,9 @@ class MusicCard extends Component {
         loading: !ok === 'OK',
         checked: false,
       });
+      if (funFavoriteSongs) {
+        funFavoriteSongs();
+      }
     });
   }
 
@@ -112,6 +116,7 @@ class MusicCard extends Component {
 
 MusicCard.defaultProps = {
   favoriteSongs: [],
+  funFavoriteSongs: () => {},
 };
 
 MusicCard.propTypes = {
@@ -122,6 +127,7 @@ MusicCard.propTypes = {
     trackId: PropTypes.number,
   }).isRequired,
   favoriteSongs: PropTypes.arrayOf(PropTypes.object),
+  funFavoriteSongs: PropTypes.func,
 };
 
 export default MusicCard;
