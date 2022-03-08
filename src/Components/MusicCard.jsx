@@ -12,6 +12,10 @@ class MusicCard extends Component {
     };
   }
 
+  componentDidMount() {
+    this.checkFavorites();
+  }
+
   addToFavorites = (music) => {
     this.setState({
       loading: true,
@@ -22,6 +26,16 @@ class MusicCard extends Component {
         checked: true,
       });
     });
+  }
+
+  checkFavorites = () => {
+    const { music, favoriteSongs } = this.props;
+    const yes = favoriteSongs.some((value) => value.trackId === music.trackId);
+    if (yes) {
+      this.setState({
+        checked: true,
+      });
+    }
   }
 
   render() {
@@ -76,14 +90,18 @@ class MusicCard extends Component {
   }
 }
 
+MusicCard.defaultProps = {
+  favoriteSongs: [],
+};
+
 MusicCard.propTypes = {
   music: PropTypes.shape({
-    // wrapperType: PropTypes.string.isRequired,
     artworkUrl100: PropTypes.string,
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
     trackId: PropTypes.number,
   }).isRequired,
+  favoriteSongs: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default MusicCard;

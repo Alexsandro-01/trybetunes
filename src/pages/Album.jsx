@@ -1,36 +1,47 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Header from '../Components/Header';
 import MusicCard from '../Components/MusicCard';
+import Loading from './Loading';
 
 class Album extends Component {
   constructor() {
     super();
     this.state = {
+      loading: false,
       albumReceived: [],
-      // albumReceivedTracks: [],
+      favoriteSongsList: [],
     };
   }
 
   componentDidMount() {
     this.receiveAlbum();
+    this.favoriteSongs();
   }
 
   receiveAlbum = async () => {
     const { match: { params: { id } } } = this.props;
     const alb = await getMusics(id);
     this.setState({
-      // albumReceivedTracks: alb.filter((music) => music.wrapperType === 'track'),
       albumReceived: alb,
     });
   }
 
+  favoriteSongs = () => {
+    this.setState({
+      loading: true,
+    }, async () => {
+      this.setState({
+        loading: false,
+        favoriteSongsList: await getFavoriteSongs(),
+      });
+    });
+  }
+
   render() {
-    // const { match: { params: { id } } } = this.props;
-    const { albumReceived } = this.state;
-    // const albumTracks = albumReceived.filter((value) => value.wrapperType === 'track');
-    // console.log(albumReceived);
+    const { albumReceived, loading, favoriteSongsList } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -48,8 +59,14 @@ class Album extends Component {
               </div>
               <div>
                 {
-                  albumReceived
-                    .map((music, index) => <MusicCard key={ index } music={ music } />)
+                  loading ? <Loading /> : albumReceived
+                    .map((music, index) => (
+                      <MusicCard
+                        key={ index }
+                        music={ music }
+                        favoriteSongs={ favoriteSongsList }
+                      />
+                    ))
                 }
               </div>
             </section>
