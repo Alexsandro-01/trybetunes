@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../styles/login.css';
 
 class Login extends Component {
   constructor() {
@@ -26,35 +27,39 @@ class Login extends Component {
     const { disabled, userName, loading, redirect } = this.state;
     // const { logarUser } = this.props;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="login-container">
         <h1>Login</h1>
-        <div className="Login">
-          <input
-            type="text"
-            name="nameUser"
-            id="nameUser"
-            value={ userName }
-            onChange={ this.checkUserName }
-            data-testid="login-name-input"
-          />
-          <button
-            type="button"
-            disabled={ disabled }
-            onClick={ () => {
-              this.setState({
-                loading: true,
-              }, async () => {
+        <div className="login-inputs">
+          <div>
+            <input
+              type="text"
+              name="nameUser"
+              id="nameUser"
+              value={ userName }
+              onChange={ this.checkUserName }
+              data-testid="login-name-input"
+            />
+          </div>
+          <div>
+            <button
+              type="button"
+              disabled={ disabled }
+              onClick={ () => {
                 this.setState({
-                  loading: false,
-                  redirect: await createUser({ name: userName }) === 'OK',
+                  loading: true,
+                }, async () => {
+                  this.setState({
+                    loading: false,
+                    redirect: await createUser({ name: userName }) === 'OK',
+                  });
+                  // logarUser();
                 });
-                // logarUser();
-              });
-            } }
-            data-testid="login-submit-button"
-          >
-            Entrar
-          </button>
+              } }
+              data-testid="login-submit-button"
+            >
+              Entrar
+            </button>
+          </div>
           {
             loading && <Loading />
           }

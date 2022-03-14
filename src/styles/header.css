@@ -1,0 +1,45 @@
+header {
+  background-color: #fea418;
+  margin-bottom: 20px;
+}
+
+header section {
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+header section div {
+  align-items: center;
+  display: flex;
+}
+
+header ul {
+  background-color: #022d55;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: auto;
+  width: 100%;
+}
+
+header ul li {
+  width: 100px;
+}
+
+header ul li a {
+  color: #fea418;
+  display: block;
+  height: 100%;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+header ul li a:hover {
+  background-color: #fea418;
+  color: #012546;
+  text-decoration: none;
+}

@@ -1,0 +1,32 @@
+.search-container-inputs {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.search-input-container {
+  align-items: center;
+  display: flex;
+}
+
+.search-result-container {
+  margin: auto;
+  max-width: 900px;
+}
+
+.search-result-container > p {
+  color: #cacaca;
+  padding: 20px 0;
+}
+
+.search-result-container p strong {
+  color: #fea148;
+  margin-left: 10px;
+}
+
+.search-result-container .albuns-result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

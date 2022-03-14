@@ -3,6 +3,7 @@ import Artist from '../Components/Artist';
 import Header from '../Components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
+import '../styles/search.css';
 
 class Search extends Component {
   constructor() {
@@ -21,7 +22,7 @@ class Search extends Component {
     this.setState({
       disabled: value.length < 2,
       termToSearch: value,
-      lastTermSearched: value,
+      // lastTermSearched: value,
     });
   }
 
@@ -36,9 +37,9 @@ class Search extends Component {
         disabled: true,
         loading: false,
         search: true,
+        lastTermSearched: term,
       });
     });
-    // console.log(albumsReceived);
   }
 
   render() {
@@ -51,9 +52,9 @@ class Search extends Component {
       lastTermSearched,
     } = this.state;
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="container">
         <Header />
-        <section>
+        <section className="search-container-inputs">
           {
             loading ? <Loading />
               : (
@@ -80,14 +81,17 @@ class Search extends Component {
         </section>
         {
           search && albumsOfTheArtist.length > 0 && (
-            <section>
+            <section className="search-result-container">
               <p>
-                {`Resultado de álbuns de: ${lastTermSearched}`}
+                { `Resultado de álbuns de: ${lastTermSearched}` }
               </p>
-              {
-                albumsOfTheArtist
-                  .map((value) => <Artist key={ value.collectionId } album={ value } />)
-              }
+              <hr />
+              <div className="albuns-result">
+                {
+                  albumsOfTheArtist
+                    .map((value) => <Artist key={ value.collectionId } album={ value } />)
+                }
+              </div>
             </section>
           )
         }

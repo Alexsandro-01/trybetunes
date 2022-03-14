@@ -87,6 +87,8 @@ class ProfileEdit extends Component {
   }
 
   validateEmail = ({ target: { value } }) => {
+    // Trecho de código baseado na solução encontrada nesse endereço:
+    // https://www.horadecodar.com.br/2020/09/13/como-validar-email-com-javascript/
     const re = /\S+@\S+\.\S+/;
     this.setState({
       validEmail: re.test(value),

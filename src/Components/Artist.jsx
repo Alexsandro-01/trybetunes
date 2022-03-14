@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import '../styles/artist.css';
 
 class Artist extends Component {
   render() {
     const { album: {
-      // artistId,
       artistName,
       collectionId,
       collectionName,
       artworkUrl100,
     } } = this.props;
     return (
-      <section>
+      <section className="artist-card-container">
         <div className="card-artist">
           <img src={ artworkUrl100 } alt={ artistName } />
           <h4>
@@ -23,7 +23,7 @@ class Artist extends Component {
               {collectionName}
             </Link>
           </h4>
-          <p>{artistName}</p>
+          <p id="artist-name">{artistName}</p>
         </div>
       </section>
     );
