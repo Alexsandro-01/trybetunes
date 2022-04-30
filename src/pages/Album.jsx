@@ -5,6 +5,7 @@ import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Header from '../Components/Header';
 import MusicCard from '../Components/MusicCard';
 import Loading from './Loading';
+import '../styles/album.css';
 
 class Album extends Component {
   constructor() {
@@ -43,12 +44,12 @@ class Album extends Component {
   render() {
     const { albumReceived, loading, favoriteSongsList } = this.state;
     return (
-      <div data-testid="page-album">
+      <div data-testid="page-album" className="container">
         <Header />
         {
           albumReceived.length > 0 && (
-            <section>
-              <div>
+            <section className="content">
+              <div className="thumb-album">
                 <div className="img-album">
                   <img src={ albumReceived[0].artworkUrl100 } alt="" />
                 </div>
@@ -57,7 +58,7 @@ class Album extends Component {
                   <p data-testid="artist-name">{albumReceived[0].artistName}</p>
                 </div>
               </div>
-              <div>
+              <div className="music">
                 {
                   loading ? <Loading /> : albumReceived
                     .map((music, index) => (

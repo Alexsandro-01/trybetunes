@@ -1,0 +1,24 @@
+.thumb-album {
+  display: flex;
+  height: 200px;
+  align-items: center;
+  background-color: rgb(8, 91, 163);
+}
+
+.thumb-album h3 {
+  font-size: 3em;
+  color: rgb(221, 221, 221);
+}
+
+.thumb-album p {
+  color: rgb(199, 199, 199);
+}
+
+.description-album {
+  margin-left: 40px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+

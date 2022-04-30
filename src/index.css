@@ -36,3 +36,8 @@ code {
   min-height: 100vh;
   min-width: 100%;
 }
+
+.content {
+  max-width: 1080px;
+  margin: auto;
+}

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FaHeart } from 'react-icons/fa';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
+import '../styles/musiccard.css';
 
 class MusicCard extends Component {
   constructor() {
@@ -92,8 +94,11 @@ class MusicCard extends Component {
               <div className="card-music-saveFavorite">
                 {
                   loading ? <Loading /> : (
-                    <label htmlFor={ music.trackId }>
-                      Favorita
+                    <label
+                      htmlFor={ music.trackId }
+                      className={ checked ? 'checked' : '' }
+                    >
+                      <FaHeart />
                       <input
                         type="checkbox"
                         name="favorite-input"

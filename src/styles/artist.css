@@ -17,6 +17,7 @@
 
 .card-artist img {
   /* height: 100px; */
+  border-radius: 5px;
   width: 80%;
   margin: auto;
 }

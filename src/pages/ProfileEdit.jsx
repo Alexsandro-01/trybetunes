@@ -107,11 +107,11 @@ class ProfileEdit extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-profile-edit">
+      <div data-testid="page-profile-edit" className="container">
         <Header />
         {
           loading ? <Loading /> : (
-            <section>
+            <section className="content">
               <div className="img-user">
                 <img
                   data-testid="profile-image"

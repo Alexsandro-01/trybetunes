@@ -81,11 +81,10 @@ class Search extends Component {
         </section>
         {
           search && albumsOfTheArtist.length > 0 && (
-            <section className="search-result-container">
+            <section className="search-result-container content">
               <p>
                 { `Resultado de álbuns de: ${lastTermSearched}` }
               </p>
-              <hr />
               <div className="albuns-result">
                 {
                   albumsOfTheArtist

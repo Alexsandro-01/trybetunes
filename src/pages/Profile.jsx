@@ -31,11 +31,11 @@ class Profile extends Component {
   render() {
     const { profile, loading } = this.state;
     return (
-      <div data-testid="page-profile">
+      <div data-testid="page-profile" className="container">
         <Header />
         {
           loading ? <Loading /> : (
-            <section>
+            <section className="content">
               <div className="img-user">
                 <img
                   data-testid="profile-image"

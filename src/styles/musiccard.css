@@ -1,0 +1,29 @@
+.card-music-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: aliceblue;
+  padding: 10px;
+}
+
+.card-music-container:hover {
+  background-color: rgb(1, 38, 70);
+}
+
+.card-music-container audio {
+  background-color: transparent;
+}
+
+.card-music-container input {
+  margin-left: 5px;
+  position: absolute;
+  opacity: 0;
+}
+
+.card-music-container label {
+  font-size: x-large;
+}
+
+.card-music-container .checked {
+  color: rgb(0, 180, 30);
+}

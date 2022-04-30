@@ -32,10 +32,10 @@ class Favorites extends Component {
   render() {
     const { favoriteSongsList, loading } = this.state;
     return (
-      <div data-testid="page-favorites">
+      <div data-testid="page-favorites" className="container">
         <Header />
         <h3>Musicas Favoritas</h3>
-        <div>
+        <div className="content">
           <div>
             {
               loading ? <Loading /> : favoriteSongsList
