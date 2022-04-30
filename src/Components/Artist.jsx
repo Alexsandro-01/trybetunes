@@ -15,14 +15,14 @@ class Artist extends Component {
       <section className="artist-card-container">
         <div className="card-artist">
           <img src={ artworkUrl100 } alt={ artistName } />
-          <h4>
+          <h5>
             <Link
               to={ `/album/${collectionId}` }
               data-testid={ `link-to-album-${collectionId}` }
             >
               {collectionName}
             </Link>
-          </h4>
+          </h5>
           <p id="artist-name">{artistName}</p>
         </div>
       </section>
