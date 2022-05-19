@@ -16,8 +16,9 @@
 }
 
 .search-result-container > p {
-  color: #cacaca;
+  color: #9eb2c8;
   padding: 20px 0;
+  text-align: center;
 }
 
 .search-result-container p strong {
@@ -28,5 +29,5 @@
 .search-result-container .albuns-result {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }

@@ -1,7 +1,7 @@
 .login-container {
   background-color: #012f57;
+  min-width: 400px;
   padding: 20px;
-  width: 400px;
 }
 
 .login-container h1 {
@@ -47,4 +47,12 @@ button {
   font-size: 1em;
   margin: auto;
   width: 50%;
+}
+
+@media ( max-width : 576px ) {
+
+  .login-container {
+    min-width: 90%;
+  }
+
 }

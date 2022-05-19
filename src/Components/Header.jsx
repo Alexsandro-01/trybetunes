@@ -40,7 +40,8 @@ class Header extends Component {
             {
               loading ? <Loading /> : (
                 <span>
-                  Bem vindo(a) de volta
+                  Olá,
+                  {' '}
                   <strong data-testid="header-user-name">{ user }</strong>
                 </span>
               )

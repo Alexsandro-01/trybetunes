@@ -1,25 +1,23 @@
 .artist-card-container {
   margin: 10px;
+  width: 160px;
 }
 
 .card-artist {
-  /* border: solid aliceblue 1px; */
-  border-radius: 5px;
+  align-items: center;
   background-color: #022349;
-  height: 250px;
-  width: 200px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  height: 250px;
   justify-content: space-between;
   padding: 10px;
-  align-items: center;
 }
 
 .card-artist img {
-  /* height: 100px; */
   border-radius: 5px;
-  width: 80%;
   margin: auto;
+  width: 80%;
 }
 
 .card-artist h5 {

@@ -66,6 +66,7 @@ class Search extends Component {
                     value={ termToSearch }
                     onChange={ this.checkTermToSearch }
                     data-testid="search-artist-input"
+                    placeholder="Busque um artista"
                   />
                   <button
                     type="button"
