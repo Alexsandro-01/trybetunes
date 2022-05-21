@@ -1,13 +1,13 @@
 .thumb-album {
+  align-items: center;
+  background-color: #085ba3;
   display: flex;
   height: 200px;
-  align-items: center;
-  background-color: rgb(8, 91, 163);
 }
 
 .thumb-album h3 {
-  font-size: 3em;
   color: rgb(221, 221, 221);
+  font-size: 2em;
 }
 
 .thumb-album p {
@@ -15,10 +15,9 @@
 }
 
 .description-album {
-  margin-left: 40px;
-  height: 100px;
   display: flex;
   flex-direction: column;
+  height: 100px;
   justify-content: space-between;
+  margin-left: 40px;
 }
-

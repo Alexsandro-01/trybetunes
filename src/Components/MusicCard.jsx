@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaPlay, FaPause } from 'react-icons/fa';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 import '../styles/musiccard.css';
@@ -11,11 +11,17 @@ class MusicCard extends Component {
     this.state = {
       loading: false,
       checked: false,
+      audioId: 'audio',
+      intervalo: null,
     };
   }
 
   componentDidMount() {
+    const { music } = this.props;
     this.checkFavorites();
+    this.setState({
+      audioId: music.trackId,
+    });
   }
 
   toggleFavoriteSongs = ({ target }, music) => {
@@ -64,9 +70,48 @@ class MusicCard extends Component {
     }
   }
 
+  progresso = (audio) => {
+    const { music } = this.props;
+    const { intervalo } = this.state;
+    const percentual = (audio.currentTime / audio.duration) * 100;
+    if (audio.currentTime === audio.duration) {
+      console.log('fim');
+      clearInterval(intervalo);
+    }
+    console.log('rolando');
+    const barra = document.getElementsByClassName(music.trackId);
+    const bar = barra[0];
+    bar.style.height = '2px';
+    bar.style.width = `${percentual}%`;
+    bar.style.background = '#085ba3';
+  }
+
+  playMusic = () => {
+    const { audioId } = this.state;
+    const SECOND = 1000;
+    const audio = document.getElementById(audioId);
+    audio.play();
+    console.log(audio.duration);
+
+    const intervalo = setInterval(() => {
+      console.log(audio.currentTime);
+      this.progresso(audio);
+    }, SECOND);
+    this.setState({
+      intervalo,
+    });
+  }
+
+  pauseMusic = () => {
+    const { audioId, intervalo } = this.state;
+    const audio = document.getElementById(audioId);
+    audio.pause();
+    clearInterval(intervalo);
+  }
+
   render() {
     const { music } = this.props;
-    const { loading, checked } = this.state;
+    const { loading, checked, audioId } = this.state;
     return (
       <section>
         {
@@ -75,21 +120,43 @@ class MusicCard extends Component {
               <div className="card-music-thumb">
                 <img src={ music.artworkUrl100 } alt="Thumbnail do albúm" />
               </div>
-              <div className="card-music-trackName">
-                <p>{music.trackName}</p>
-              </div>
-              <div className="card-music-player">
-                {
-                  music.previewUrl && (
-                    <audio
-                      data-testid="audio-component"
-                      src={ music.previewUrl }
-                      controls
-                    >
-                      <track kind="captions" />
-                    </audio>
-                  )
-                }
+              <div className="card-music-label-player">
+                <div className="card-music-trackName">
+                  <p>{music.trackName}</p>
+                </div>
+                <div className="card-music-player">
+                  {
+                    music.previewUrl && (
+                      <>
+                        <audio
+                          data-testid="audio-component"
+                          src={ music.previewUrl }
+                          controls
+                          id={ audioId }
+                        >
+                          <track kind="captions" />
+                        </audio>
+                        <div>
+                          <button
+                            type="button"
+                            onClick={ () => this.playMusic() }
+                          >
+                            <FaPlay />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={ () => this.pauseMusic() }
+                          >
+                            <FaPause />
+                          </button>
+                        </div>
+                      </>
+                    )
+                  }
+                </div>
+                <div className="progress-bar">
+                  <div className={ music.trackId } />
+                </div>
               </div>
               <div className="card-music-saveFavorite">
                 {
