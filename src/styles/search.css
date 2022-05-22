@@ -15,14 +15,8 @@
   max-width: 900px;
 }
 
-.search-result-container > p {
-  color: #9eb2c8;
-  padding: 20px 0;
-  text-align: center;
-}
-
 .search-result-container p strong {
-  color: #fea148;
+  color: #fea418;
   margin-left: 10px;
 }
 

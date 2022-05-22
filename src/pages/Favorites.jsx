@@ -34,7 +34,7 @@ class Favorites extends Component {
     return (
       <div data-testid="page-favorites" className="container">
         <Header />
-        <h3>Musicas Favoritas</h3>
+        <h3 className="page-description">Musicas Favoritas</h3>
         <div className="content">
           <div>
             {

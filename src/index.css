@@ -42,3 +42,13 @@ code {
   max-width: 1080px;
   margin: auto;
 }
+
+.page-description {
+  color: #9eb2c8;
+  padding: 20px 0;
+  text-align: center;
+}
+
+button:disabled {
+  background-color: #9eb2c8;
+}

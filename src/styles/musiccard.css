@@ -7,11 +7,12 @@
 }
 
 .card-music-container .card-music-thumb {
-  width: 20%;
+  width: 10%;
 }
 
 .card-music-container .card-music-trackName {
   color: #b3d8f8;
+  font-size: 1.5em;
 }
 
 .card-music-container .card-music-thumb img {
@@ -19,7 +20,7 @@
 }
 
 .card-music-container:hover {
-  background-color: rgb(1, 38, 70);
+  background-color: #012646;
 }
 
 .card-music-container audio {
@@ -27,24 +28,25 @@
 }
 
 .card-music-container input {
+  left: 5px;
   margin-left: 5px;
   opacity: 0;
   position: absolute;
 }
 
-.card-music-container label {
+.card-music-container .card-music-saveFavorite label {
   font-size: x-large;
 }
 
 .card-music-container .checked {
-  color: rgb(0, 180, 30);
+  color: #fea418;
 }
 
 .card-music-saveFavorite {
   align-items: center;
   display: flex;
   justify-content: center;
-  width: 10%;
+  position: relative;
 }
 
 /* PLAYER  */
@@ -53,8 +55,12 @@
 }
 
 .card-music-label-player {
-  padding: 0 10px;
-  width: 70%;
+  display: flex;
+  flex-direction: column;
+  height: 130px;
+  justify-content: space-around;
+  padding: 10px;
+  width: 80%;
 }
 
 .card-music-player audio {
@@ -67,7 +73,32 @@
 }
 
 .card-music-container .progress-bar {
-  background-color: aliceblue;
+  background-color: rgb(178, 178, 178);
   height: 2px;
   width: 100%;
+}
+
+@media ( max-width : 576px ) {
+
+  .card-music-container .card-music-thumb {
+    width: 20%;
+  }
+
+  .card-music-label-player {
+    height: 70px;
+    padding: 0 10px;
+    width: 70%;
+  }
+
+  .card-music-container .card-music-trackName {
+    color: #b3d8f8;
+    font-size: 1em;
+  }
+
+  .card-music-saveFavorite {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
 }

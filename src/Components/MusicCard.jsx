@@ -24,6 +24,11 @@ class MusicCard extends Component {
     });
   }
 
+  componentWillUnmount() {
+    const { intervalo } = this.state;
+    clearInterval(intervalo);
+  }
+
   toggleFavoriteSongs = ({ target }, music) => {
     if (target.checked) {
       this.addToFavorites(music);
@@ -75,15 +80,13 @@ class MusicCard extends Component {
     const { intervalo } = this.state;
     const percentual = (audio.currentTime / audio.duration) * 100;
     if (audio.currentTime === audio.duration) {
-      console.log('fim');
       clearInterval(intervalo);
     }
-    console.log('rolando');
     const barra = document.getElementsByClassName(music.trackId);
     const bar = barra[0];
     bar.style.height = '2px';
     bar.style.width = `${percentual}%`;
-    bar.style.background = '#085ba3';
+    bar.style.background = '#fea418';
   }
 
   playMusic = () => {
@@ -91,10 +94,8 @@ class MusicCard extends Component {
     const SECOND = 1000;
     const audio = document.getElementById(audioId);
     audio.play();
-    console.log(audio.duration);
 
     const intervalo = setInterval(() => {
-      console.log(audio.currentTime);
       this.progresso(audio);
     }, SECOND);
     this.setState({

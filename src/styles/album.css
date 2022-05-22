@@ -6,12 +6,12 @@
 }
 
 .thumb-album h3 {
-  color: rgb(221, 221, 221);
-  font-size: 2em;
+  color: #ddd;
+  font-size: 3em;
 }
 
 .thumb-album p {
-  color: rgb(199, 199, 199);
+  color: #c7c7c7;
 }
 
 .description-album {
@@ -20,4 +20,13 @@
   height: 100px;
   justify-content: space-between;
   margin-left: 40px;
+}
+
+@media ( max-width : 576px ) {
+
+  .thumb-album h3 {
+    color: #ddd;
+    font-size: 1.5em;
+  }
+
 }
