@@ -66,6 +66,7 @@ class Search extends Component {
                     value={ termToSearch }
                     onChange={ this.checkTermToSearch }
                     data-testid="search-artist-input"
+                    placeholder="Busque um artista"
                   />
                   <button
                     type="button"
@@ -82,7 +83,7 @@ class Search extends Component {
         {
           search && albumsOfTheArtist.length > 0 && (
             <section className="search-result-container content">
-              <p>
+              <p className="page-description">
                 { `Resultado de álbuns de: ${lastTermSearched}` }
               </p>
               <div className="albuns-result">

@@ -15,18 +15,13 @@
   max-width: 900px;
 }
 
-.search-result-container > p {
-  color: #cacaca;
-  padding: 20px 0;
-}
-
 .search-result-container p strong {
-  color: #fea148;
+  color: #fea418;
   margin-left: 10px;
 }
 
 .search-result-container .albuns-result {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }

@@ -35,9 +35,20 @@ code {
 .container {
   min-height: 100vh;
   min-width: 100%;
+  max-width: 100%;
 }
 
 .content {
   max-width: 1080px;
   margin: auto;
+}
+
+.page-description {
+  color: #9eb2c8;
+  padding: 20px 0;
+  text-align: center;
+}
+
+button:disabled {
+  background-color: #9eb2c8;
 }

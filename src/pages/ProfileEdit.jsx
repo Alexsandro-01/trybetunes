@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Header from '../Components/Header';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../styles/profile.css';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -13,7 +14,6 @@ class ProfileEdit extends Component {
       redirect: false,
       name: '',
       email: '',
-      image: '',
       description: '',
       validEmail: false,
     };
@@ -28,13 +28,11 @@ class ProfileEdit extends Component {
     const {
       name,
       email,
-      image,
       description,
       validEmail,
     } = this.state;
     if (name !== ''
       && email !== ''
-      && image !== ''
       && description !== ''
       && validEmail) {
       this.setState({
@@ -53,7 +51,6 @@ class ProfileEdit extends Component {
         loading: false,
         name: profile.name,
         email: profile.email,
-        image: profile.image,
         description: profile.description,
         validEmail: re.test(profile.email),
       });
@@ -65,13 +62,12 @@ class ProfileEdit extends Component {
     const {
       name,
       email,
-      image,
       description,
     } = this.state;
     this.setState({
       loading: true,
     }, async () => {
-      const ok = await updateUser({ name, email, image, description });
+      const ok = await updateUser({ name, email, description });
       this.setState({
         loading: false,
         redirect: ok === 'OK',
@@ -101,7 +97,6 @@ class ProfileEdit extends Component {
       disabled,
       name,
       email,
-      image,
       description,
       redirect,
     } = this.state;
@@ -111,23 +106,7 @@ class ProfileEdit extends Component {
         <Header />
         {
           loading ? <Loading /> : (
-            <section className="content">
-              <div className="img-user">
-                <img
-                  data-testid="profile-image"
-                  src={ image }
-                  alt={ name }
-                />
-                <input
-                  data-testid="edit-input-image"
-                  name="image"
-                  type="text"
-                  placeholder="Editar imagem"
-                  onChange={ (e) => { this.handleInputs(e); } }
-                  value={ image }
-                  autoComplete="none"
-                />
-              </div>
+            <section className="content profile-page">
               <div className="name-user">
                 <p><strong>Nome:</strong></p>
                 <input
@@ -163,7 +142,7 @@ class ProfileEdit extends Component {
                   value={ description }
                 />
               </div>
-              <div className="button-edit-user">
+              <div className="edit-user">
                 <button
                   data-testid="edit-button-save"
                   disabled={ disabled }
