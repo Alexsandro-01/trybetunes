@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+// import { connect } from 'react-redux';
 import Artist from '../Components/Artist';
 import Header from '../Components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
 import '../styles/search.css';
+// import { addAlbuns } from '../slices';
 
 class Search extends Component {
   constructor() {
