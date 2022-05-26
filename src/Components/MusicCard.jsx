@@ -9,6 +9,7 @@ class MusicCard extends Component {
   constructor() {
     super();
     this.state = {
+      play: false,
       loading: false,
       checked: false,
       audioId: 'audio',
@@ -112,7 +113,7 @@ class MusicCard extends Component {
 
   render() {
     const { music } = this.props;
-    const { loading, checked, audioId } = this.state;
+    const { loading, checked, audioId, play } = this.state;
     return (
       <section>
         {
@@ -142,18 +143,33 @@ class MusicCard extends Component {
                           <track kind="captions" />
                         </audio>
                         <div>
-                          <button
-                            type="button"
-                            onClick={ () => this.playMusic() }
-                          >
-                            <FaPlay />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={ () => this.pauseMusic() }
-                          >
-                            <FaPause />
-                          </button>
+                          {
+                            play ? (
+                              <button
+                                type="button"
+                                onClick={ () => {
+                                  this.pauseMusic();
+                                  this.setState({
+                                    play: !play,
+                                  });
+                                } }
+                              >
+                                <FaPause />
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={ () => {
+                                  this.playMusic();
+                                  this.setState({
+                                    play: !play,
+                                  });
+                                } }
+                              >
+                                <FaPlay />
+                              </button>
+                            )
+                          }
                         </div>
                       </>
                     )
