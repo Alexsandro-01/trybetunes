@@ -4,8 +4,8 @@ import myReducer from '../slices';
 
 const store = configureStore({
   reducer: {
-    albums: myReducer,
+    data: myReducer,
   },
 });
-
+// console.log(store.albums);
 export default store;

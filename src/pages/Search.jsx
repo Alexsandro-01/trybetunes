@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Artist from '../Components/Artist';
 import Header from '../Components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
 import '../styles/search.css';
-// import { addAlbuns } from '../slices';
+import { addAlbuns } from '../slices';
 
 class Search extends Component {
   constructor() {
@@ -13,7 +14,6 @@ class Search extends Component {
     this.state = {
       termToSearch: '',
       lastTermSearched: '',
-      albumsOfTheArtist: [],
       disabled: true,
       loading: false,
       search: false,
@@ -24,18 +24,19 @@ class Search extends Component {
     this.setState({
       disabled: value.length < 2,
       termToSearch: value,
-      // lastTermSearched: value,
     });
   }
 
   albums = (term) => {
+    const { addToRTK } = this.props;
+
     this.setState({
       loading: true,
       termToSearch: '',
     }, async () => {
       const albumsReceived = await searchAlbumsAPI(term);
+      addToRTK(albumsReceived);
       this.setState({
-        albumsOfTheArtist: albumsReceived,
         disabled: true,
         loading: false,
         search: true,
@@ -50,9 +51,10 @@ class Search extends Component {
       disabled,
       loading,
       search,
-      albumsOfTheArtist,
       lastTermSearched,
     } = this.state;
+
+    const { data } = this.props;
     return (
       <div data-testid="page-search" className="container">
         <Header />
@@ -76,21 +78,21 @@ class Search extends Component {
                     data-testid="search-artist-button"
                     onClick={ () => { this.albums(termToSearch); } }
                   >
-                    Pesquisar
+                    Find
                   </button>
                 </div>
               )
           }
         </section>
         {
-          search && albumsOfTheArtist.length > 0 && (
+          data.albums.length > 0 && (
             <section className="search-result-container content">
               <p className="page-description">
                 { `Resultado de álbuns de: ${lastTermSearched}` }
               </p>
               <div className="albuns-result">
                 {
-                  albumsOfTheArtist
+                  data.albums
                     .map((value) => <Artist key={ value.collectionId } album={ value } />)
                 }
               </div>
@@ -98,11 +100,26 @@ class Search extends Component {
           )
         }
         {
-          search && albumsOfTheArtist.length === 0 && <p>Nenhum álbum foi encontrado</p>
+          search && data.albums.length === 0 && (
+            <p className="page-description">Nenhum álbum foi encontrado</p>
+          )
         }
       </div>
     );
   }
 }
 
-export default Search;
+Search.propTypes = {
+  addToRTK: PropTypes.func.isRequired,
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addToRTK: (value) => dispatch(addAlbuns(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

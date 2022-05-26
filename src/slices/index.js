@@ -1,14 +1,16 @@
 // src/reducers/index.js
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [];
+const initialState = {
+  albums: [],
+};
 
 const addSlice = createSlice({
-  name: 'albuns',
+  name: 'data',
   initialState,
   reducers: {
     addAlbuns: (state, action) => {
-      state = [...action.payload];
+      state.albums = [...action.payload];
     },
   },
 });

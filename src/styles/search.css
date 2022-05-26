@@ -5,6 +5,14 @@
   padding: 20px;
 }
 
+.search-container-inputs input {
+  border-radius: 5px 0 0 5px;
+}
+
+.search-container-inputs button {
+  border-radius: 0 5px 5px 0;
+}
+
 .search-input-container {
   align-items: center;
   display: flex;
@@ -24,4 +32,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.artist-name {
+  width: 100%;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-name abbr {
+  text-decoration: none;
 }

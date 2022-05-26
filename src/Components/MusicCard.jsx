@@ -84,9 +84,9 @@ class MusicCard extends Component {
     }
     const barra = document.getElementsByClassName(music.trackId);
     const bar = barra[0];
-    bar.style.height = '2px';
-    bar.style.width = `${percentual}%`;
-    bar.style.background = '#fea418';
+    bar.style.cssText = `height: 2px; width: ${percentual}%; background: #fea418;`;
+    // bar.style.width = ``;
+    // bar.style.background = '#fea418';
   }
 
   playMusic = () => {
@@ -123,7 +123,11 @@ class MusicCard extends Component {
               </div>
               <div className="card-music-label-player">
                 <div className="card-music-trackName">
-                  <p>{music.trackName}</p>
+                  <p className="artist-name">
+                    <abbr title={ music.trackName }>
+                      {music.trackName}
+                    </abbr>
+                  </p>
                 </div>
                 <div className="card-music-player">
                   {
