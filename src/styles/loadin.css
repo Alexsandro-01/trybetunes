@@ -1,0 +1,31 @@
+.dot {
+  display: flex;
+  justify-content: center;
+  /* border: solid 1px aliceblue; */
+}
+
+.dot div {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #fea418;
+  border-radius: 50%;
+  animation: move 0.5s ease-in-out infinite alternate;
+}
+
+.dot div:nth-child(1) {
+  animation-delay: -0.4s;
+}
+
+.dot div:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(200%);
+  }
+}

@@ -26,20 +26,18 @@ input {
 }
 
 .login-inputs input {
-  background-color: #012546;
-  border-bottom: #fea418 2px solid;
-  color: aliceblue;
   width: 100%;
 }
 
 button {
-  background-color: #02aee2;
+  background-color: #fea418;
   border: none;
   border-radius: 5px;
   color: #001a31;
   cursor: pointer;
-  font-weight: 700;
-  padding: 10px;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 8px;
 }
 
 .login-inputs button {

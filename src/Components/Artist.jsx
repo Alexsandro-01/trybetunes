@@ -23,7 +23,11 @@ class Artist extends Component {
               {collectionName}
             </Link>
           </h5>
-          <p id="artist-name">{artistName}</p>
+          <p className="artist-name" id="artist-name">
+            <abbr title={ artistName }>
+              {artistName}
+            </abbr>
+          </p>
         </div>
       </section>
     );
