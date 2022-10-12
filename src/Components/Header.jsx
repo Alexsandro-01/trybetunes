@@ -23,7 +23,6 @@ class Header extends Component {
       user: await user.name,
       loading: false,
     });
-    // console.log(await user.name);
   }
 
   render() {
