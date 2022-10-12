@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, HashRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Album from './pages/Album';
@@ -12,21 +12,19 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <HashRouter>
-          <Switch>
-            <Route path="/profile/edit" component={ ProfileEdit } />
-            <Route exact path="/profile" component={ Profile } />
-            <Route path="/favorites" component={ Favorites } />
-            <Route path="/album/:id" component={ Album } />
-            <Route path="/search" component={ Search } />
-            <Route
-              exact
-              path="/"
-              render={ () => <Login /> }
-            />
-            <Route path="*" component={ NotFound } />
-          </Switch>
-        </HashRouter>
+        <Switch>
+          <Route path="/profile/edit" component={ ProfileEdit } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route path="/favorites" component={ Favorites } />
+          <Route path="/album/:id" component={ Album } />
+          <Route path="/search" component={ Search } />
+          <Route
+            exact
+            path="/"
+            render={ () => <Login /> }
+          />
+          <Route path="*" component={ NotFound } />
+        </Switch>
       </div>
     );
   }
