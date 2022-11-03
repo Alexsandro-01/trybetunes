@@ -37,7 +37,7 @@ class Login extends Component {
                   <input
                     type="text"
                     name="nameUser"
-                    placeholder="Insira o seu nome"
+                    placeholder="Qual o seu nome?"
                     id="nameUser"
                     value={ userName }
                     onChange={ this.checkUserName }
